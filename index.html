@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yunus Can Kişisel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <section class="login-container">
+        <h2>Giriş Ekranı</h2>
+        <label for="username">Kullanıcı Adı:</label>
+        <input type="text" id="username">
+        <label for="password">Şifre:</label>
+        <input type="password" id="password">
+        <button onclick="checkLogin()">Giriş Yap</button>
+        <p id="result"></p>
+    </section>
+
+    <div class="hero">
+        <nav>
+            <img src="img/Logoorj.PNG" class="logo">
+            <ul class="profile-container">
+                <li><a href="#">Hakkımda</a></li>
+                <li><a href="#">İletişim</a></li>
+                <li><a href="#" onclick="showMultiplicationTable()">Çarpım Tablosu</a></li>
+            </ul>
+        </nav>
+        <div class="ayrinti profile-container">
+            <h1>Ben Yunus <span>Can</span></h1>
+            <p><strong>Üniversite: </strong><span>Gazi Üniversitesi Tusaş Kazan M.Y.O.</span></p>
+            <p><strong>Öğrenci Numarası: </strong><span>23380101030</span></p>
+            <p><strong>Bölüm: </strong><span>Bilgisayar Programcılığı</span></p>
+            <p><strong>G-mail: </strong><span>06canyunus06@gmaıl.com</span></p>
+            <p><strong>Telefon Numarası: </strong><span>05432845972</span></p>
+        </div>
+        <div class="img profile-container">
+            <img src="img/foto.jpg" class="ben">
+        </div>
+    </div>
+
+    <section class="table-container" id="table-section">
+        <h2>Çarpım Tablosu</h2>
+        <input type="number" id="num1">
+        <input type="number" id="num2">
+        <button onclick="showMultiplicationTable()">Göster</button>
+        <table id="multiplicationTable" style="display: none;"></table>
+        <div id="result-container" style="display: none;"></div>
+    </section>
+
+    <script>
+        function checkLogin() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var resultElement = document.getElementById('result');
+            var loginContainer = document.querySelector('.login-container');
+            var profileContainer = document.querySelectorAll('.profile-container');
+            var tableContainer = document.querySelector('.table-container');
+
+            if (username === 'yunuscan' && password === '1234') {
+                resultElement.style.color = 'green';
+                resultElement.innerHTML = 'Giriş Başarılı. Yönlendiriliyorsunuz...';
+
+                loginContainer.style.display = 'none';
+                profileContainer.forEach(container => container.style.display = 'block');
+                tableContainer.style.display = 'block';
+
+                showMultiplicationTable();
+            } else {
+                resultElement.style.color = 'red';
+                resultElement.innerHTML = 'Hatalı kullanıcı adı veya şifre.';
+            }
+        }
+
+        function showMultiplicationTable() {
+            var num1 = parseInt(document.getElementById('num1').value) || 1;
+            var num2 = parseInt(document.getElementById('num2').value) || 1;
+            var table = document.getElementById('multiplicationTable');
+            var resultContainer = document.getElementById('result-container');
+
+            table.innerHTML = '';
+            resultContainer.innerHTML = '';
+
+            for (var i = 1; i <= 10; i++) {
+                var row = table.insertRow();
+
+                for (var j = 1; j <= 10; j++) {
+                    var cell = row.insertCell();
+                    var result = i * j;
+                    cell.textContent = result;
+
+                    if (result === num1 * num2) {
+                        cell.style.color = 'red';
+                    }
+                }
+            }
+
+            table.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
