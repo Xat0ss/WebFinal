@@ -8,15 +8,6 @@
 </head>
 
 <body>
-    <section class="login-container">
-        <h2>Giriş Ekranı</h2>
-        <label for="username">Kullanıcı Adı:</label>
-        <input type="text" id="username">
-        <label for="password">Şifre:</label>
-        <input type="password" id="password">
-        <button onclick="checkLogin()">Giriş Yap</button>
-        <p id="result"></p>
-    </section>
 
     <div class="hero">
         <nav>
@@ -32,7 +23,7 @@
             <p><strong>Üniversite: </strong><span>Gazi Üniversitesi Tusaş Kazan M.Y.O.</span></p>
             <p><strong>Öğrenci Numarası: </strong><span>23380101030</span></p>
             <p><strong>Bölüm: </strong><span>Bilgisayar Programcılığı</span></p>
-            <p><strong>G-mail: </strong><span>06canyunus06@gmaıl.com</span></p>
+            <p><strong>G-mail: </strong><span>06canyunus06@gmail.com</span></p>
             <p><strong>Telefon Numarası: </strong><span>05432845972</span></p>
         </div>
         <div class="img profile-container">
@@ -49,29 +40,17 @@
         <div id="result-container" style="display: none;"></div>
     </section>
 
+    <section class="login-container">
+        <h2>Giriş Ekranı</h2>
+        <label for="username">Kullanıcı Adı:</label>
+        <input type="text" id="username">
+        <label for="password">Şifre:</label>
+        <input type="password" id="password">
+        <button onclick="checkLogin()">Giriş Yap</button>
+        <p id="result"></p>
+    </section>
+
     <script>
-        function checkLogin() {
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-            var resultElement = document.getElementById('result');
-            var loginContainer = document.querySelector('.login-container');
-            var profileContainer = document.querySelectorAll('.profile-container');
-            var tableContainer = document.querySelector('.table-container');
-
-            if (username === 'yunuscan' && password === '1234') {
-                resultElement.style.color = 'green';
-                resultElement.innerHTML = 'Giriş Başarılı. Yönlendiriliyorsunuz...';
-
-                loginContainer.style.display = 'none';
-                profileContainer.forEach(container => container.style.display = 'block');
-                tableContainer.style.display = 'block';
-
-                showMultiplicationTable();
-            } else {
-                resultElement.style.color = 'red';
-                resultElement.innerHTML = 'Hatalı kullanıcı adı veya şifre.';
-            }
-        }
 
         function showMultiplicationTable() {
             var num1 = parseInt(document.getElementById('num1').value) || 1;
@@ -97,6 +76,32 @@
             }
 
             table.style.display = 'block';
+        }
+        function checkLogin() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var resultElement = document.getElementById('result');
+
+            // Hocam internetten bulduğum bir kod başka türlü içeri nasıl aktarılacağını bulamadım
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            var loginContainer = document.querySelector('.login-container');
+            var profileContainer = document.querySelectorAll('.profile-container');
+            var tableContainer = document.querySelector('.table-container');
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            if (username === 'yunuscan' && password === '1234') {
+                resultElement.style.color = 'green';
+                resultElement.innerHTML = 'Giriş Başarılı. Yönlendiriliyorsunuz...';
+
+                loginContainer.style.display = 'none';
+                profileContainer.forEach(container => container.style.display = 'block');
+                tableContainer.style.display = 'block';
+
+                showMultiplicationTable();
+            } else {
+                resultElement.style.color = 'red';
+                resultElement.innerHTML = 'Hatalı kullanıcı adı veya şifre.';
+            }
         }
     </script>
 </body>
